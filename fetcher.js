@@ -7,7 +7,10 @@ console.log(input);
 
 request(input, (error, response, body) => {
   console.log('error:', error);
-  console.log('statusCode:', response && response.statusCode);
+  if ('statusCode' !== 200) 
+    console.log('statusCode:', response && response.statusCode);
+  if (input2 === undefined)
+     console.log("local file not found") 
   fs.appendFile(input2, ('body:', body), (err) => {
     if (err) throw err;
   });
